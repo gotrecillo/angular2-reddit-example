@@ -3,28 +3,40 @@ import { BrowserModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 @Component({
-    selector : 're-hello-world',
+    selector : 're-app',
     template : `
-        <ul>
-            <li *ngFor="let name of names">Hello {{ name }}</li>
-        </ul>
+        <form class="ui large form segment">
+            <h3 class="ui header">Add a Link</h3>
+            
+            <div class="field">
+                <label for="title">Title:</label>
+                <input type="text" name="title" #title>
+            </div>
+            <div class="field">
+                <label for="link">Link:</label>
+                <input type="text" name="link" #link>
+            </div>
+            
+            <button (click)="addArticle(title, link)"
+                class="ui positive right floated button">
+                Submit link
+            </button>
+        </form>
         `,
 })
-class HelloWorld {
-    names: string[];
-
-    public constructor() {
-        this.names = ['Gotre', 'Gotrecillo', 'Uxy', 'Gotruxy'];
+class App {
+    public addArticle(title: HTMLInputElement, link: HTMLInputElement): boolean {
+        console.log(`Adding article title: ${title.value} and link: ${link.value}`);
+        return false;
     }
 }
 
 @NgModule({
-    declarations : [ HelloWorld ],
+    declarations : [ App ],
     imports      : [ BrowserModule ],
-    bootstrap    : [ HelloWorld ],
+    bootstrap    : [ App ],
 })
 
-class HelloWorldAppModule {
-}
+class AppModule {}
 
-platformBrowserDynamic().bootstrapModule(HelloWorldAppModule);
+platformBrowserDynamic().bootstrapModule(AppModule);
