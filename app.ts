@@ -3,15 +3,19 @@ import { BrowserModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 @Component({
-    selector : 'hello-world',
+    selector : 're-hello-world',
     template : `
         <div>
-            Hello world
+            Hello {{ name }}
         </div>
         `,
 })
 class HelloWorld {
+    name: string;
 
+    public constructor() {
+        this.name = 'Gotre';
+    }
 }
 
 @NgModule({
