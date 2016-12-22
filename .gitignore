@@ -7,4 +7,6 @@ node_modules
 logs
 *.log
 npm-debug.log*
+app.js
+app.js.map
 node_modules
